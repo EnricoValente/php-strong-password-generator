@@ -1,16 +1,4 @@
-<?php
-    function randomPassword() {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!£$%/*';
-        $pass = array(); 
-        $alphaLength = strlen($alphabet) - 1; 
-        for ($i = 0; $i < 8; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        return implode($pass);
-    }
-    echo randomPassword();
-?>
+
 
 
 
@@ -34,7 +22,7 @@
                     <form action="" method="GET">
                         <div class="mb-3">
                             <label for="Password lenght" class="form-label">Password lenght</label>
-                            <input type="number" class="form-control" name="">
+                            <input type="number" class="form-control" name="lenght">
                         </div>
                         <button type="submit" class="btn btn-primary">Send</button>
 
@@ -47,3 +35,18 @@
         </div>
     </body>
 </html>
+
+<?php
+    function randomPassword() {
+        $passwordLenght = $_GET['lenght'];
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!£$%/*';
+        $pass = array(); 
+        $alphaLength = $passwordLenght; 
+        for ($i = 0; $i < $alphaLength; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass);
+    }
+    echo randomPassword();
+?>
