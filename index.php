@@ -1,5 +1,20 @@
 
+<?php
+if (isset($_GET['lenght'])) {
+    
+    $passLenght = intval($_GET['lenght']);
+   
+    $charactersDatabase = 'abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789';
+    $password = '';
+   
+    for ($i=0; $i < $passLenght; $i++) { 
+       $randomCharacter = $charactersDatabase[rand(0, strlen($charactersDatabase) - 1)];
+       
+       $password .=  $randomCharacter;
+    }
+}
 
+?>
 
 
 <!DOCTYPE html>
@@ -22,31 +37,24 @@
                     <form action="" method="GET">
                         <div class="mb-3">
                             <label for="Password lenght" class="form-label">Password lenght</label>
-                            <input type="number" class="form-control" name="lenght">
+                            <input type="number" id="Password lenght" class="form-control" name="lenght">
                         </div>
-                        <button type="submit" class="btn btn-primary">Send</button>
+                        <button type="submit" class="btn btn-primary">Generate password</button>
 
                     </form>
                 </div>
-                            
 
-                    
+                <div>
+                    <?php echo $password?>
+                </div>
             </div>
         </div>
-    </body>
-</html>
+                            
 
-<?php
-    function randomPassword() {
-        $passwordLenght = $_GET['lenght'];
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!£$%/*';
-        $pass = array(); 
-        $alphaLength = $passwordLenght; 
-        for ($i = 0; $i < $alphaLength; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        return implode($pass);
-    }
-    echo randomPassword();
-?>
+          
+        
+                    
+    </body>
+    </html>
+    
+    
