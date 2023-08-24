@@ -1,17 +1,11 @@
 
 <?php
+include __DIR__.'/functions.php';
 if (isset($_GET['lenght'])) {
     
     $passLenght = intval($_GET['lenght']);
    
-    $charactersDatabase = 'abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789';
-    $password = '';
-   
-    for ($i=0; $i < $passLenght; $i++) { 
-       $randomCharacter = $charactersDatabase[rand(0, strlen($charactersDatabase) - 1)];
-       
-       $password .=  $randomCharacter;
-    }
+    randomPassword($passLenght);
 }
 
 ?>
@@ -45,7 +39,7 @@ if (isset($_GET['lenght'])) {
                 </div>
 
                 <div>
-                    <?php echo $password?>
+                    <?php echo randomPassword($passLenght);?>
                 </div>
             </div>
         </div>
